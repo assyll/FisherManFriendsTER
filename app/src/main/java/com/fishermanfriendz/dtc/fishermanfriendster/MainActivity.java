@@ -2,6 +2,7 @@ package com.fishermanfriendz.dtc.fishermanfriendster;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -126,6 +127,8 @@ public class MainActivity extends ActionBarActivity {
         else
         {
             BluetoothClient btclient = new BluetoothClient(this.bluetoothDeviceServerName, mBluetoothAdapter); //le client est HTCC
+            Intent i = new Intent(MainActivity.this, LakeActivity.class);
+            startActivity(i);
             //Toast.makeText(getApplicationContext(), this.serverName.getName(), Toast.LENGTH_SHORT).show();
             //System.out.println(this.bluetoothDeviceServerName.toString());
         }

@@ -4,12 +4,6 @@
     android:layout_height="match_parent"
     android:weightSum="1">
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="0.07" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -18,33 +12,38 @@
         android:id="@+id/title"
         android:layout_gravity="center_horizontal" />
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="0.13" />
-
-    <Button
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Canne à pêche"
-        android:id="@+id/bouton_canne"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="0.07"
-        android:onClick="client" />
+        android:text="Nom du serveur bluetooth"
+        android:id="@+id/textView" />
 
-    <Space
-        android:layout_width="match_parent"
+    <EditText
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="0.07" />
+        android:id="@+id/editText"
+        android:text="Hero" />
 
-    <Button
-        android:layout_width="136dp"
-        android:layout_height="wrap_content"
-        android:text="Lac"
-        android:id="@+id/bouton_lac"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="0.07"
-        android:onClick="server" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Canne à pêche"
+            android:id="@+id/bouton_canne"
+            android:layout_gravity="center_horizontal"
+            android:onClick="setMeAsClient" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lac"
+            android:id="@+id/bouton_lac"
+            android:layout_gravity="center_horizontal"
+            android:onClick="setMeAsServer" />
+    </LinearLayout>
+
 </LinearLayout>

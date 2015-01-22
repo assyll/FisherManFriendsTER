@@ -31,6 +31,7 @@ public class LakeView extends SurfaceView {
     private int degree = 0;
     private ArrayList<Poisson> listePoissons= new ArrayList<Poisson>();
     Lake lac;
+    private int nb = 0, nbFished = 0;
 
     public LakeView(Context context) {
 
@@ -45,8 +46,7 @@ public class LakeView extends SurfaceView {
             listePoissons.add(new Poisson(Poisson.Side.Left, Poisson.DirectionType.DiagonalDownRight, 0, 500 , 25, 25,  bmp1, bmp2));
             listePoissons.add(new Poisson(Poisson.Side.Right, Poisson.DirectionType.DiagonalDownRight, display.getWidth(), 100 , 30, 30,  bmp1, bmp2));
             listePoissons.add(new Poisson(Poisson.Side.Right, Poisson.DirectionType.Straight, display.getWidth(), 500 , 15, 15,  bmp1, bmp2));
-
-            lac = new Lake(5, 5, listePoissons, bmp2, display.getHeight(), display.getWidth(), bmp1);
+            lac = new Lake(5, 0, listePoissons, bmp2, display.getHeight(), display.getWidth(), bmp1);
             gameLoopThread = new LakeLoopThread(this);
             holder = getHolder();
             holder.addCallback(new SurfaceHolder.Callback() {
@@ -88,24 +88,30 @@ public class LakeView extends SurfaceView {
         canvas.drawPaint(paint);
 
         paint.setColor(Color.BLACK);
-        paint.setTextSize(20);
+        paint.setTextSize(50);
+        canvas.drawText("Score  = " + nb , 10, 50, paint);
+        nb++;
 
-        lac.updateNbFish();
-        lac.addFishToNbMaxFish();
+        if(nb == 6) {
+            lac.addFish();
+            nb = 0;
+        }
+
 
         for (Poisson p : lac.getListePoissons())
         {
             p.move();
+            canvas.drawBitmap(p.getBmp(), p.getCoordX(), p.getCoordY(), null);
 
-            if (lac.getListePoissons().indexOf(p) == 1)
-            canvas.drawText("FISH = " + p.getCoordX(), 10, 25, paint);
-           canvas.drawBitmap(p.getBmp(), p.getCoordX(), p.getCoordY(), null);
 
         }
 
+    }
 
-
-
+    void delete(Poisson p)
+    {
+        lac.getListePoissons().remove(p);
+        nbFished++;
     }
 
 

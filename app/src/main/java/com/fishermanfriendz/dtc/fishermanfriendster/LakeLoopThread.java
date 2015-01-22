@@ -6,7 +6,7 @@ import android.graphics.Canvas;
  * Created by Assyl on 22/01/2015.
  */
 public class LakeLoopThread extends Thread {
-    static final long FPS = 20;
+    static final long FPS = 30;
     private LakeView view;
     private boolean running = false;
 

@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.view.Display;
+import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
@@ -29,14 +30,14 @@ public class LakeView extends SurfaceView {
     private int ySpeed = 1;
     boolean left = true;
     private int degree = 0;
-    private ArrayList<Poisson> listePoissons= new ArrayList<Poisson>();
+    private ArrayList<Poisson> listePoissons= new ArrayList<Poisson>(), toDelete;
     Lake lac;
     private int nb = 0, nbFished = 0;
 
     public LakeView(Context context) {
 
             super(context);
-
+            toDelete = new ArrayList<>();
             WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
             Display display = wm.getDefaultDisplay();
             Bitmap bmp1 =  BitmapFactory.decodeResource(getResources(), R.drawable.catfish1);
@@ -89,7 +90,7 @@ public class LakeView extends SurfaceView {
 
         paint.setColor(Color.BLACK);
         paint.setTextSize(50);
-        canvas.drawText("Score  = " + nb , 10, 50, paint);
+        canvas.drawText("Score  = " + nbFished , 10, 50, paint);
         nb++;
 
         if(nb == 6) {
@@ -106,13 +107,39 @@ public class LakeView extends SurfaceView {
 
         }
 
+
+        for(Poisson p : toDelete)
+        {
+            lac.getListePoissons().remove(p);
+            nbFished++;
+        }
+
+        toDelete.clear();
+
     }
 
-    void delete(Poisson p)
-    {
-        lac.getListePoissons().remove(p);
-        nbFished++;
-    }
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+         x = (int)event.getX();
+         y = (int)event.getY();
 
+        toDelete = new ArrayList<>();
+
+        for(Poisson p : lac.getListePoissons())
+        {
+           if ( x >= p.getCoordX() && x <= (p.getCoordX()+  p.getBmp().getHeight()) && y >= p.getCoordY() && y <= (p.getCoordY()+  p.getBmp().getHeight()))
+           {
+               toDelete.add(p);
+           }
+        }
+
+
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+            case MotionEvent.ACTION_MOVE:
+            case MotionEvent.ACTION_UP:
+        }
+        return false;
+    }
 
 }

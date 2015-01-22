@@ -28,17 +28,19 @@ public class Poisson {
     private DirectionType directionType;
     private Bitmap bmp1;
     private Bitmap bmp2;
+    private Bitmap bmp;
     private int coordX;
     private int coordY;
     private int speedX;
     private int speedY;
     private boolean left;
 
-    public Poisson(Side side, DirectionType directionType, int coordX, int speedX, int speedY, int coordY, Bitmap img1, Bitmap img2) {
+    public Poisson(Side side, DirectionType directionType, int coordX, int coordY, int speedX, int speedY,  Bitmap img1, Bitmap img2) {
         this.side = side;
         this.directionType = directionType;
         this.bmp1 = img1;
-        this.bmp1 = img2;
+        this.bmp2 = img2;
+        this.bmp = img1;
         this.coordX = coordX;
         this.speedX = speedX;
         this.speedY = speedY;
@@ -62,10 +64,72 @@ public class Poisson {
         this.directionType = directionType;
     }
 
+    public Bitmap getBmp1() {
+        return bmp1;
+    }
+
+    public void setBmp1(Bitmap bmp1) {
+        this.bmp1 = bmp1;
+    }
+
+    public Bitmap getBmp2() {
+        return bmp2;
+    }
+
+    public void setBmp2(Bitmap bmp2) {
+        this.bmp2 = bmp2;
+    }
+
+    public Bitmap getBmp() {
+        return bmp;
+    }
+
+    public void setBmp(Bitmap bmp) {
+        this.bmp = bmp;
+    }
+
+    public int getCoordX() {
+        return coordX;
+    }
+
+    public void setCoordX(int coordX) {
+        this.coordX = coordX;
+    }
+
+    public int getCoordY() {
+        return coordY;
+    }
+
+    public void setCoordY(int coordY) {
+        this.coordY = coordY;
+    }
+
+    public int getSpeedX() {
+        return speedX;
+    }
+
+    public void setSpeedX(int speedX) {
+        this.speedX = speedX;
+    }
+
+    public int getSpeedY() {
+        return speedY;
+    }
+
+    public void setSpeedY(int speedY) {
+        this.speedY = speedY;
+    }
+
+    public boolean isLeft() {
+        return left;
+    }
+
+    public void setLeft(boolean left) {
+        this.left = left;
+    }
 
     public void move()
     {
-        Bitmap bmp;
         if (left)  bmp = bmp1;
         else    bmp = bmp2;
 
@@ -79,17 +143,17 @@ public class Poisson {
                 switch (directionType) {
                     case Straight:
                         matrix.postRotate(180);
-                        rotatedBitmap = Bitmap.createBitmap(bmp , 0, 0, bmp.getWidth(), bmp.getHeight(), matrix, true);
+                        bmp = Bitmap.createBitmap(bmp , 0, 0, bmp.getWidth(), bmp.getHeight(), matrix, true);
                         updateCoord(0, speedY);
                         return;
                     case DiagonalDownRight:
                         matrix.postRotate(135);
-                        rotatedBitmap = Bitmap.createBitmap(bmp , 0, 0, bmp.getWidth(), bmp.getHeight(), matrix, true);
+                        bmp = Bitmap.createBitmap(bmp , 0, 0, bmp.getWidth(), bmp.getHeight(), matrix, true);
                         updateCoord(speedX, speedY);
                         return;
                     case DiagonalUpLeft:
                         matrix.postRotate(225);
-                        rotatedBitmap = Bitmap.createBitmap(bmp , 0, 0, bmp.getWidth(), bmp.getHeight(), matrix, true);
+                        bmp = Bitmap.createBitmap(bmp , 0, 0, bmp.getWidth(), bmp.getHeight(), matrix, true);
                         updateCoord(-speedX, speedY);
                         return;
                 }
@@ -98,18 +162,18 @@ public class Poisson {
             case Bottom:
                 switch (directionType) {
                     case Straight:
-                        matrix.postRotate(180);
-                        rotatedBitmap = Bitmap.createBitmap(bmp , 0, 0, bmp.getWidth(), bmp.getHeight(), matrix, true);
+                        matrix.postRotate(0);
+                        bmp = Bitmap.createBitmap(bmp , 0, 0, bmp.getWidth(), bmp.getHeight(), matrix, true);
                         updateCoord(0, -speedY);
                         return;
                     case DiagonalDownRight:
                         matrix.postRotate(45);
-                        rotatedBitmap = Bitmap.createBitmap(bmp , 0, 0, bmp.getWidth(), bmp.getHeight(), matrix, true);
+                        bmp = Bitmap.createBitmap(bmp , 0, 0, bmp.getWidth(), bmp.getHeight(), matrix, true);
                         updateCoord(speedX, -speedY);
                         return;
                     case DiagonalUpLeft:
                         matrix.postRotate(315);
-                        rotatedBitmap = Bitmap.createBitmap(bmp , 0, 0, bmp.getWidth(), bmp.getHeight(), matrix, true);
+                        bmp = Bitmap.createBitmap(bmp , 0, 0, bmp.getWidth(), bmp.getHeight(), matrix, true);
                         updateCoord(-speedX, -speedY);
                         return;
                 }
@@ -118,32 +182,39 @@ public class Poisson {
             case Right:
                 switch (directionType) {
                     case Straight:
-                        matrix.postRotate(90);
-                        rotatedBitmap = Bitmap.createBitmap(bmp , 0, 0, bmp.getWidth(), bmp.getHeight(), matrix, true);
+                        matrix.postRotate(270);
+                        bmp = Bitmap.createBitmap(bmp , 0, 0, bmp.getWidth(), bmp.getHeight(), matrix, true);
                         updateCoord(-speedX, 0);
                         return;
                     case DiagonalDownRight:
                         matrix.postRotate(225);
-                        rotatedBitmap = Bitmap.createBitmap(bmp , 0, 0, bmp.getWidth(), bmp.getHeight(), matrix, true);
+                        bmp = Bitmap.createBitmap(bmp , 0, 0, bmp.getWidth(), bmp.getHeight(), matrix, true);
                         updateCoord(-speedX, speedY);
                         return;
                     case DiagonalUpLeft:
                         matrix.postRotate(315);
-                        rotatedBitmap = Bitmap.createBitmap(bmp , 0, 0, bmp.getWidth(), bmp.getHeight(), matrix, true);
+                        bmp = Bitmap.createBitmap(bmp , 0, 0, bmp.getWidth(), bmp.getHeight(), matrix, true);
                         updateCoord(-speedX, -speedY);
                         return;
                 }
             case Left:
-
                 switch (directionType) {
                     case Straight:
+                        matrix.postRotate(90);
+                        bmp = Bitmap.createBitmap(bmp , 0, 0, bmp.getWidth(), bmp.getHeight(), matrix, true);
+                        updateCoord(speedX, 0);
                         return;
                     case DiagonalDownRight:
+                        matrix.postRotate(135);
+                        bmp = Bitmap.createBitmap(bmp , 0, 0, bmp.getWidth(), bmp.getHeight(), matrix, true);
+                        updateCoord(speedX, speedY);
                         return;
                     case DiagonalUpLeft:
+                        matrix.postRotate(315);
+                        bmp = Bitmap.createBitmap(bmp , 0, 0, bmp.getWidth(), bmp.getHeight(), matrix, true);
+                        updateCoord(-speedX, -speedY);
                         return;
                 }
-                return;
         }
     }
 

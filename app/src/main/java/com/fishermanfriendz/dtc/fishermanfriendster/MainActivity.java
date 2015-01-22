@@ -127,8 +127,6 @@ public class MainActivity extends ActionBarActivity {
         else
         {
             BluetoothClient btclient = new BluetoothClient(this.bluetoothDeviceServerName, mBluetoothAdapter); //le client est HTCC
-            Intent i = new Intent(MainActivity.this, LakeActivity.class);
-            startActivity(i);
             //Toast.makeText(getApplicationContext(), this.serverName.getName(), Toast.LENGTH_SHORT).show();
             //System.out.println(this.bluetoothDeviceServerName.toString());
         }
@@ -138,6 +136,8 @@ public class MainActivity extends ActionBarActivity {
         Log.i("ServerBT","Starting server");
         BluetoothServer btserv = new BluetoothServer(mBluetoothAdapter);
         btserv.start();
+        Intent i = new Intent(MainActivity.this, LakeActivity.class);
+        startActivity(i);
         Toast.makeText(getApplicationContext(), "serveur lancé", Toast.LENGTH_SHORT).show();
     }
 }

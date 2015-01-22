@@ -117,7 +117,6 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void client() {
-        Log.i("ClientBT", "Starting client");
 
         if (this.bluetoothDeviceServerName == null)
         {
@@ -126,7 +125,9 @@ public class MainActivity extends ActionBarActivity {
         }
         else
         {
+            Log.i("ClientBT", "Starting client");
             BluetoothClient btclient = new BluetoothClient(this.bluetoothDeviceServerName, mBluetoothAdapter); //le client est HTCC
+            btclient.start();
             //Toast.makeText(getApplicationContext(), this.serverName.getName(), Toast.LENGTH_SHORT).show();
             //System.out.println(this.bluetoothDeviceServerName.toString());
         }

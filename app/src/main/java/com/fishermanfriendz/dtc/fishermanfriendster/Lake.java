@@ -89,25 +89,25 @@ public class Lake  {
             {
                 case 1 :
                     randomNum = 1 + (int)(Math.random()*width);
-                    listePoissons.add(new Poisson(Poisson.Side.Top, Poisson.DirectionType.Straight, randomNum, 0 , 25, 25,  bmp1, bmp2));
+                    listePoissons.add(new Poisson(Poisson.Side.Top, Poisson.DirectionType.Straight, randomNum, 0 , 100, 100,  bmp1, bmp2));
                     nbFishInLake++;
                     return;
 
                 case 2:
                     randomNum = 1 + (int)(Math.random()*width);
-                    listePoissons.add(new Poisson(Poisson.Side.Bottom, Poisson.DirectionType.Straight, randomNum, height , 25, 25,  bmp1, bmp2));
+                    listePoissons.add(new Poisson(Poisson.Side.Bottom, Poisson.DirectionType.Straight, randomNum, height , 100, 100,  bmp1, bmp2));
                     nbFishInLake++;
                     return;
 
                 case 3:
                     randomNum = 1 + (int)(Math.random()*height);
-                    listePoissons.add(new Poisson(Poisson.Side.Left, Poisson.DirectionType.DiagonalDownRight, 0, randomNum , 25, 25,  bmp1, bmp2));
+                    listePoissons.add(new Poisson(Poisson.Side.Left, Poisson.DirectionType.DiagonalDownRight, 0, randomNum , 100, 100,  bmp1, bmp2));
                     nbFishInLake++;
                     return;
 
                 case 4:
                     randomNum = 1 + (int)(Math.random()*height);
-                    listePoissons.add(new Poisson(Poisson.Side.Right, Poisson.DirectionType.Straight, width, randomNum , 15, 15,  bmp1, bmp2));
+                    listePoissons.add(new Poisson(Poisson.Side.Right, Poisson.DirectionType.Straight, width, randomNum , 100, 100,  bmp1, bmp2));
                     nbFishInLake++;
                     return;
             }
@@ -151,60 +151,60 @@ public class Lake  {
             {
                 case 1 :
                     randomNum = 1 + (int)(Math.random()*width);
-                    listePoissons.add(new Poisson(Poisson.Side.Top, Poisson.DirectionType.Straight, randomNum, 0 , 25, 25,  bmp1, bmp2));
+                    listePoissons.add(new Poisson(Poisson.Side.Top, Poisson.DirectionType.Straight, randomNum, 0 , 50, 50,  bmp1, bmp2));
                     break;
 
                 case 2:
                     randomNum = 1 + (int)(Math.random()*width);
-                    listePoissons.add(new Poisson(Poisson.Side.Bottom, Poisson.DirectionType.Straight, randomNum, height , 25, 25,  bmp1, bmp2));
+                    listePoissons.add(new Poisson(Poisson.Side.Bottom, Poisson.DirectionType.Straight, randomNum, height , 50, 50,  bmp1, bmp2));
                     break;
 
                 case 3:
                     randomNum = 1 + (int)(Math.random()*height);
-                    listePoissons.add(new Poisson(Poisson.Side.Left, Poisson.DirectionType.DiagonalDownRight, 0, randomNum , 25, 25,  bmp1, bmp2));
+                    listePoissons.add(new Poisson(Poisson.Side.Left, Poisson.DirectionType.DiagonalDownRight, 0, randomNum , 50, 50,  bmp1, bmp2));
                     break;
 
                 case 4:
                     randomNum = 1 + (int)(Math.random()*height);
-                    listePoissons.add(new Poisson(Poisson.Side.Right, Poisson.DirectionType.Straight, width, randomNum , 15, 15,  bmp1, bmp2));
+                    listePoissons.add(new Poisson(Poisson.Side.Right, Poisson.DirectionType.Straight, width, randomNum , 50, 50,  bmp1, bmp2));
                     break;
 
                 case 5:
                     randomNum = 1 + (int)(Math.random()*height);
-                    listePoissons.add(new Poisson(Poisson.Side.Left, Poisson.DirectionType.Straight, 0, randomNum , 25, 25,  bmp1, bmp2));
+                    listePoissons.add(new Poisson(Poisson.Side.Left, Poisson.DirectionType.Straight, 0, randomNum , 50, 50,  bmp1, bmp2));
                     break;
 
                 case 6:
                     randomNum = 1 + (int)(Math.random()*height);
-                    listePoissons.add(new Poisson(Poisson.Side.Left, Poisson.DirectionType.DiagonalUpLeft, 0, randomNum , 25, 25,  bmp1, bmp2));
+                    listePoissons.add(new Poisson(Poisson.Side.Left, Poisson.DirectionType.DiagonalUpLeft, 0, randomNum , 50, 50,  bmp1, bmp2));
                     break;
 
                 case 7 :
                     randomNum = 1 + (int)(Math.random()*width);
-                    listePoissons.add(new Poisson(Poisson.Side.Top, Poisson.DirectionType.DiagonalDownRight, randomNum, 0 , 25, 25,  bmp1, bmp2));
+                    listePoissons.add(new Poisson(Poisson.Side.Top, Poisson.DirectionType.DiagonalDownRight, randomNum, 0 , 50, 50,  bmp1, bmp2));
                     break;
 
                 case 8 :
                     randomNum = 1 + (int)(Math.random()*width);
-                    listePoissons.add(new Poisson(Poisson.Side.Top, Poisson.DirectionType.DiagonalUpLeft, randomNum, 0 , 25, 25,  bmp1, bmp2));
+                    listePoissons.add(new Poisson(Poisson.Side.Top, Poisson.DirectionType.DiagonalUpLeft, randomNum, 0 , 50, 50,  bmp1, bmp2));
                     break;
 
 
                 case 9:
                     randomNum = 1 + (int)(Math.random()*width);
-                    listePoissons.add(new Poisson(Poisson.Side.Bottom, Poisson.DirectionType.DiagonalDownRight, randomNum, height , 25, 25,  bmp1, bmp2));
+                    listePoissons.add(new Poisson(Poisson.Side.Bottom, Poisson.DirectionType.DiagonalDownRight, randomNum, height , 50, 50,  bmp1, bmp2));
                     break;
 
 
                 case 10:
                     randomNum = 1 + (int)(Math.random()*width);
-                    listePoissons.add(new Poisson(Poisson.Side.Bottom, Poisson.DirectionType.DiagonalUpLeft, randomNum, height , 25, 25,  bmp1, bmp2));
+                    listePoissons.add(new Poisson(Poisson.Side.Bottom, Poisson.DirectionType.DiagonalUpLeft, randomNum, height , 50, 50,  bmp1, bmp2));
                     break;
 
 
                 case 11:
                     randomNum = 1 + (int)(Math.random()*height);
-                    listePoissons.add(new Poisson(Poisson.Side.Right, Poisson.DirectionType.DiagonalDownRight, width, randomNum , 15, 15,  bmp1, bmp2));
+                    listePoissons.add(new Poisson(Poisson.Side.Right, Poisson.DirectionType.DiagonalDownRight, width, randomNum , 50, 50,  bmp1, bmp2));
                     break;
             }
 

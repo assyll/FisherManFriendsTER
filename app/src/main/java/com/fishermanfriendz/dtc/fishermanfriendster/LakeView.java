@@ -42,11 +42,11 @@ public class LakeView extends SurfaceView {
             Display display = wm.getDefaultDisplay();
             Bitmap bmp1 =  BitmapFactory.decodeResource(getResources(), R.drawable.catfish1);
             Bitmap bmp2 =  BitmapFactory.decodeResource(getResources(), R.drawable.catfish2);
-            listePoissons.add(new Poisson(Poisson.Side.Top, Poisson.DirectionType.Straight, 30, 0 , 25, 25,  bmp1, bmp2));
-            listePoissons.add(new Poisson(Poisson.Side.Bottom, Poisson.DirectionType.Straight, 500, display.getHeight() , 25, 25,  bmp1, bmp2));
-            listePoissons.add(new Poisson(Poisson.Side.Left, Poisson.DirectionType.DiagonalDownRight, 0, 500 , 25, 25,  bmp1, bmp2));
+            listePoissons.add(new Poisson(Poisson.Side.Top, Poisson.DirectionType.Straight, 30, 0 , 30, 30,  bmp1, bmp2));
+            listePoissons.add(new Poisson(Poisson.Side.Bottom, Poisson.DirectionType.Straight, 500, display.getHeight() , 30, 30,  bmp1, bmp2));
+            listePoissons.add(new Poisson(Poisson.Side.Left, Poisson.DirectionType.DiagonalDownRight, 0, 500 , 30, 30,  bmp1, bmp2));
             listePoissons.add(new Poisson(Poisson.Side.Right, Poisson.DirectionType.DiagonalDownRight, display.getWidth(), 100 , 30, 30,  bmp1, bmp2));
-            listePoissons.add(new Poisson(Poisson.Side.Right, Poisson.DirectionType.Straight, display.getWidth(), 500 , 15, 15,  bmp1, bmp2));
+            listePoissons.add(new Poisson(Poisson.Side.Right, Poisson.DirectionType.Straight, display.getWidth(), 500 , 30, 30,  bmp1, bmp2));
             lac = new Lake(5, 0, listePoissons, bmp2, display.getHeight(), display.getWidth(), bmp1);
             gameLoopThread = new LakeLoopThread(this);
             holder = getHolder();
@@ -113,6 +113,7 @@ public class LakeView extends SurfaceView {
             lac.getListePoissons().remove(p);
             nbFished++;
         }
+        lac.updateNbFish();
 
         toDelete.clear();
 

@@ -93,7 +93,7 @@ public class LakeView extends SurfaceView {
         canvas.drawText("Score  = " + nbFished , 10, 50, paint);
         nb++;
 
-        if(nb == 6) {
+        if(nb == 3) {
             lac.addFish();
             nb = 0;
         }

@@ -145,19 +145,19 @@ public class Poisson {
                         matrix.postRotate(180);
                         bmp = Bitmap.createBitmap(bmp , 0, 0, bmp.getWidth(), bmp.getHeight(), matrix, true);
                         updateCoord(0, speedY);
-                        return;
+                        break;
                     case DiagonalDownRight:
                         matrix.postRotate(135);
                         bmp = Bitmap.createBitmap(bmp , 0, 0, bmp.getWidth(), bmp.getHeight(), matrix, true);
                         updateCoord(speedX, speedY);
-                        return;
+                        break;
                     case DiagonalUpLeft:
                         matrix.postRotate(225);
                         bmp = Bitmap.createBitmap(bmp , 0, 0, bmp.getWidth(), bmp.getHeight(), matrix, true);
                         updateCoord(-speedX, speedY);
-                        return;
+                        break;
                 }
-                return;
+                break;
 
             case Bottom:
                 switch (directionType) {
@@ -165,19 +165,19 @@ public class Poisson {
                         matrix.postRotate(0);
                         bmp = Bitmap.createBitmap(bmp , 0, 0, bmp.getWidth(), bmp.getHeight(), matrix, true);
                         updateCoord(0, -speedY);
-                        return;
+                        break;
                     case DiagonalDownRight:
                         matrix.postRotate(45);
                         bmp = Bitmap.createBitmap(bmp , 0, 0, bmp.getWidth(), bmp.getHeight(), matrix, true);
                         updateCoord(speedX, -speedY);
-                        return;
+                        break;
                     case DiagonalUpLeft:
                         matrix.postRotate(315);
                         bmp = Bitmap.createBitmap(bmp , 0, 0, bmp.getWidth(), bmp.getHeight(), matrix, true);
                         updateCoord(-speedX, -speedY);
-                        return;
+                        break;
                 }
-                return;
+                break;
 
             case Right:
                 switch (directionType) {
@@ -185,17 +185,17 @@ public class Poisson {
                         matrix.postRotate(270);
                         bmp = Bitmap.createBitmap(bmp , 0, 0, bmp.getWidth(), bmp.getHeight(), matrix, true);
                         updateCoord(-speedX, 0);
-                        return;
+                        break;
                     case DiagonalDownRight:
                         matrix.postRotate(225);
                         bmp = Bitmap.createBitmap(bmp , 0, 0, bmp.getWidth(), bmp.getHeight(), matrix, true);
                         updateCoord(-speedX, speedY);
-                        return;
+                        break;
                     case DiagonalUpLeft:
                         matrix.postRotate(315);
                         bmp = Bitmap.createBitmap(bmp , 0, 0, bmp.getWidth(), bmp.getHeight(), matrix, true);
                         updateCoord(-speedX, -speedY);
-                        return;
+                        break;
                 }
             case Left:
                 switch (directionType) {
@@ -203,17 +203,17 @@ public class Poisson {
                         matrix.postRotate(90);
                         bmp = Bitmap.createBitmap(bmp , 0, 0, bmp.getWidth(), bmp.getHeight(), matrix, true);
                         updateCoord(speedX, 0);
-                        return;
+                        break;
                     case DiagonalDownRight:
                         matrix.postRotate(135);
                         bmp = Bitmap.createBitmap(bmp , 0, 0, bmp.getWidth(), bmp.getHeight(), matrix, true);
                         updateCoord(speedX, speedY);
-                        return;
+                        break;
                     case DiagonalUpLeft:
                         matrix.postRotate(315);
                         bmp = Bitmap.createBitmap(bmp , 0, 0, bmp.getWidth(), bmp.getHeight(), matrix, true);
                         updateCoord(-speedX, -speedY);
-                        return;
+                        break;
                 }
         }
     }

@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Matrix;
+import android.graphics.Paint;
 import android.view.Display;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -29,10 +30,12 @@ public class LakeView extends SurfaceView {
     boolean left = true;
     private int degree = 0;
     private ArrayList<Poisson> listePoissons= new ArrayList<Poisson>();
+    Lake lac;
 
     public LakeView(Context context) {
 
             super(context);
+
             WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
             Display display = wm.getDefaultDisplay();
             Bitmap bmp1 =  BitmapFactory.decodeResource(getResources(), R.drawable.catfish1);
@@ -42,7 +45,8 @@ public class LakeView extends SurfaceView {
             listePoissons.add(new Poisson(Poisson.Side.Left, Poisson.DirectionType.DiagonalDownRight, 0, 500 , 25, 25,  bmp1, bmp2));
             listePoissons.add(new Poisson(Poisson.Side.Right, Poisson.DirectionType.DiagonalDownRight, display.getWidth(), 100 , 30, 30,  bmp1, bmp2));
             listePoissons.add(new Poisson(Poisson.Side.Right, Poisson.DirectionType.Straight, display.getWidth(), 500 , 15, 15,  bmp1, bmp2));
-        //listePoissons.add(new Poisson(Poisson.Side.Bottom, Poisson.DirectionType.Straight, 200, display.getHeight() , 200, 20,  bmp1, bmp2));
+
+            lac = new Lake(5, 5, listePoissons, bmp2, display.getHeight(), display.getWidth(), bmp1);
             gameLoopThread = new LakeLoopThread(this);
             holder = getHolder();
             holder.addCallback(new SurfaceHolder.Callback() {
@@ -78,15 +82,31 @@ public class LakeView extends SurfaceView {
     @Override
     protected void onDraw(Canvas canvas) {
         canvas.drawColor(Color.CYAN);
+        Paint paint = new Paint();
+        paint.setColor(Color.CYAN);
+        paint.setStyle(Paint.Style.FILL);
+        canvas.drawPaint(paint);
 
-        for (Poisson p : listePoissons)
+        paint.setColor(Color.BLACK);
+        paint.setTextSize(20);
+
+        lac.updateNbFish();
+        lac.addFishToNbMaxFish();
+
+        for (Poisson p : lac.getListePoissons())
         {
             p.move();
+
+            if (lac.getListePoissons().indexOf(p) == 1)
+            canvas.drawText("FISH = " + p.getCoordX(), 10, 25, paint);
            canvas.drawBitmap(p.getBmp(), p.getCoordX(), p.getCoordY(), null);
 
         }
 
 
 
+
     }
+
+
 }

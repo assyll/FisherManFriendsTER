@@ -19,7 +19,10 @@ public class LakeView extends SurfaceView {
     private LakeLoopThread gameLoopThread;
     private int x = 0;
     private int xSpeed = 1;
+    private int y = 0;
+    private int ySpeed = 1;
     boolean left = true;
+    private int degree = 0;
 
     public LakeView(Context context) {
         super(context);
@@ -56,13 +59,14 @@ public class LakeView extends SurfaceView {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        if (left)  bmp = BitmapFactory.decodeResource(getResources(), R.drawable.catfish1);
-        else    bmp = BitmapFactory.decodeResource(getResources(), R.drawable.catfish2);
+            if (left)  bmp = BitmapFactory.decodeResource(getResources(), R.drawable.catfish1);
+            else    bmp = BitmapFactory.decodeResource(getResources(), R.drawable.catfish2);
 
-        Matrix matrix = new Matrix();
-        matrix.postRotate(180);
-        Bitmap rotatedBitmap = Bitmap.createBitmap(bmp , 0, 0, bmp.getWidth(), bmp.getHeight(), matrix, true);
+            Matrix matrix = new Matrix();
+            matrix.postRotate(180);
+            Bitmap rotatedBitmap = Bitmap.createBitmap(bmp , 0, 0, bmp.getWidth(), bmp.getHeight(), matrix, true);
 
+        degree += 5;
         if (x == bmp.getHeight()) {
             xSpeed = -10;
         }
@@ -70,11 +74,19 @@ public class LakeView extends SurfaceView {
             xSpeed = 20;
         }
         x = x + xSpeed;
+
+        if (y == bmp.getHeight()) {
+            ySpeed = -10;
+        }
+        if (y == 0) {
+            ySpeed = 20;
+        }
+        y = y + ySpeed;
         canvas.drawColor(Color.CYAN);
 
 
 
         left = !left;
-         canvas.drawBitmap(rotatedBitmap, 10 , x, null);
+         canvas.drawBitmap(rotatedBitmap, x , y, null);
     }
 }

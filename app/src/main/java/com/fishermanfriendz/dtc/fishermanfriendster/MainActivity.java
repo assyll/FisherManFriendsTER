@@ -37,8 +37,10 @@ public class MainActivity extends ActionBarActivity {
 
     public void setMeAsServer(View v){
         this.server = true;
-        initialisationConnexxion();
-        server();
+        Intent i = new Intent(MainActivity.this, LakeActivity.class);
+        startActivity(i);
+        //initialisationConnexxion();
+        //server();
     }
 
     public void setMeAsClient(View v){
@@ -56,7 +58,7 @@ public class MainActivity extends ActionBarActivity {
 
         if (mBluetoothAdapter == null) {
             // Le terminal ne possÃ¨de pas le Bluetooth
-            Toast.makeText(getApplicationContext(), "pas de BT", Toast.LENGTH_SHORT).show();
+
         }
         else
         {
@@ -74,7 +76,7 @@ public class MainActivity extends ActionBarActivity {
                         s+="NAME:"+device.getName() + "\n" + "adress:"+device.getAddress()+"\n";
                         //Je cherche celui dont j'ai besoin (en fait les 2 tel avec lesquels j'ai testÃ©
                         if (server) {
-                            Toast.makeText(getApplicationContext(), "Je suis appairé avec : " + device.getName(), Toast.LENGTH_SHORT).show();
+
                             this.bluetoothDeviceClientName=device;
                         }
                         if (!server && device.getName().equals(serverName)) {
@@ -120,7 +122,7 @@ public class MainActivity extends ActionBarActivity {
 
         if (this.bluetoothDeviceServerName == null)
         {
-            Toast.makeText(getApplicationContext(), "server est null", Toast.LENGTH_SHORT).show();
+
             Log.e("ClientBT", "Device is null");
         }
         else
@@ -137,8 +139,9 @@ public class MainActivity extends ActionBarActivity {
         Log.i("ServerBT","Starting server");
         BluetoothServer btserv = new BluetoothServer(mBluetoothAdapter);
         btserv.start();
+        /*
         Intent i = new Intent(MainActivity.this, LakeActivity.class);
         startActivity(i);
-        Toast.makeText(getApplicationContext(), "serveur lancé", Toast.LENGTH_SHORT).show();
+        */
     }
 }
